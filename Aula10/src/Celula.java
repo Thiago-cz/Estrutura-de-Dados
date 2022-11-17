@@ -31,9 +31,11 @@ public class Celula {
         return this.anterior;
     }
 
-    Object getElement() {
+    int getElementInt() {
+        return (int) this.elemento;
+    }
+    Object getElement(){
         return this.elemento;
     }
-
     
 }

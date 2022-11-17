@@ -4,20 +4,18 @@
     // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
         {
             "type": "java",
             "name": "Launch App",
             "request": "launch",
             "mainClass": "App",
-            "projectName": ""
-        },
-        {
-            "type": "java",
-            "name": "File",
-            "request": "launch",
-            "mainClass": "App",
-            "projectName": "Aula9_a5a7bdec"
+            "projectName": "Aula10_f4ffecc"
         }
     ]
 }

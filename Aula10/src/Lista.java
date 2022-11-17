@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Lista {
     Celula primeira, ultima;
     int tamanho;
@@ -107,8 +109,8 @@ public class Lista {
             } else {
                 if (pos == tamanho - 1) {
                     removerFim();
-                }else {
-                    Celula anterior = this.pegarCelula(pos -1);
+                } else {
+                    Celula anterior = this.pegarCelula(pos - 1);
                     Celula atual = anterior.getProxima();
                     Celula proxima = atual.getProxima();
 
@@ -139,5 +141,98 @@ public class Lista {
         tamanho = 0;
     }
 
-    
+    void imprimir() {
+        if (this.tamanho == 0) {
+            System.out.println("[]");
+        } else {
+            StringBuilder builder = new StringBuilder("[");
+            Celula atual = this.primeira;
+
+            for (int i = 0; i < this.tamanho - 1; i++) {
+                builder.append(atual.getElement());
+                builder.append(", ");
+                atual = atual.getProxima();
+            }
+
+            builder.append(atual.getElement());
+            builder.append("]");
+            builder.toString();
+            System.out.println(builder);
+        }
+    }
+
+    Random random = new Random();
+    int nSorteado = 0;
+    int[] array = new int[1000];
+
+    void sortear() {
+
+        StringBuilder string = new StringBuilder("[");
+
+        for (int i = 1; i <= array.length; i++) {
+
+            nSorteado = random.nextInt(19999);
+            if (nSorteado > 9999) {
+                nSorteado = (nSorteado - 9999) * (-1);
+            }
+
+            array[i - 1] = nSorteado;
+            string.append(array[i - 1]);
+            string.append(",");
+        }
+        string.append("]");
+        string.toString();
+        System.out.println(string);
+    }
+
+    void ordemCres(Object elemento) {
+        Celula nova = new Celula(elemento);
+        Celula anterior = this.ultima;
+        int pos = tamanho;
+
+        if (tamanho == 0) {
+            addInicio(elemento);
+        } else {
+            if (nova.getElementInt() >= anterior.getElementInt()) {
+                addFinal(elemento);
+            } else {
+                while (nova.getElementInt() <= anterior.getElementInt()) {
+                    if (anterior.getAnterior() == null) {
+                        addInicio(elemento);
+                        break;
+                    } else {
+                        anterior = anterior.getAnterior();
+                    }
+                    pos--;
+                }
+                addMeio(pos, elemento);
+            }
+
+        }
+    }
+
+    void numeroPrimo() {
+        Celula atual = primeira;
+        Celula proxima = atual.getProxima();
+        Celula anterior = atual.getAnterior();
+
+        for (int i = 0; i < tamanho; i++) {
+
+            if (atual.getElementInt() == 2 || atual.getElementInt() == 3
+                    || atual.getElementInt() == 5
+                    || atual.getElementInt() == 11) {
+                anterior.setProxima(proxima);
+                proxima.setAnterior(anterior);
+                atual = anterior;
+                atual.getProxima();
+            }
+            if ((atual.getElementInt() % 2) != 0 && (atual.getElementInt() % 3) != 0
+                    && (atual.getElementInt() % 5) != 0) {
+                anterior.setProxima(proxima);
+                proxima.setAnterior(anterior);
+                atual = proxima;
+            }
+        }
+    }
+
 }

@@ -127,7 +127,7 @@ public class Lista {
     Random random = new Random();
     int sorteado = 0;
 
-    int x = 19;
+    int x = 20;
 
     void sortear() {
         for (int i = 0; i <= 19; i++) {
@@ -142,7 +142,7 @@ public class Lista {
 
             x--;
 
-            for (int j = 0; j <= x; j++) {
+            for (int j = 0; j < x; j++) {
                 Pessoa atual = (Pessoa) pega(j);
 
                 System.out.println("O nome da pessoa eh:" + atual.nome);
