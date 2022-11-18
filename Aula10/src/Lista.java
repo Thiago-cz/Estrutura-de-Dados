@@ -169,17 +169,18 @@ public class Lista {
 
         StringBuilder string = new StringBuilder("[");
 
-        for (int i = 1; i <= array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
 
             nSorteado = random.nextInt(19999);
             if (nSorteado > 9999) {
                 nSorteado = (nSorteado - 9999) * (-1);
             }
 
-            array[i - 1] = nSorteado;
-            string.append(array[i - 1]);
+            array[i] = nSorteado;
+            string.append(array[i]);
             string.append(",");
         }
+
         string.append("]");
         string.toString();
         System.out.println(string);
@@ -196,16 +197,21 @@ public class Lista {
             if (nova.getElementInt() >= anterior.getElementInt()) {
                 addFinal(elemento);
             } else {
+                boolean verificarAdd = false;
+
                 while (nova.getElementInt() <= anterior.getElementInt()) {
                     if (anterior.getAnterior() == null) {
                         addInicio(elemento);
+                        verificarAdd = true;
                         break;
                     } else {
                         anterior = anterior.getAnterior();
                     }
                     pos--;
                 }
-                addMeio(pos, elemento);
+                if (verificarAdd == false) {
+                    addMeio(pos, elemento);
+                }
             }
 
         }
@@ -213,26 +219,43 @@ public class Lista {
 
     void numeroPrimo() {
         Celula atual = primeira;
-        Celula proxima = atual.getProxima();
-        Celula anterior = atual.getAnterior();
+        for (int i = 0; i < 999; i++) {
 
-        for (int i = 0; i < tamanho; i++) {
+            if (atual.getElementInt() > 1) {
 
-            if (atual.getElementInt() == 2 || atual.getElementInt() == 3
-                    || atual.getElementInt() == 5
-                    || atual.getElementInt() == 11) {
-                anterior.setProxima(proxima);
-                proxima.setAnterior(anterior);
-                atual = anterior;
-                atual.getProxima();
+                if (verfPrimo(atual.getElementInt())) {
+                    System.out.println("Numero primo --> " + atual.getElementInt());
+
+                    Celula anterior = atual.getAnterior();
+                    if (atual.getProxima() == null) {
+                        anterior.setProxima(null);
+                        ultima = atual;
+                        tamanho--;
+                    } else {
+                        Celula proxima = atual.getProxima();
+                        anterior.setProxima(proxima);
+                        proxima.setAnterior(anterior);
+                        atual = proxima;
+                        tamanho--;
+                    }
+                } else {
+                    atual = atual.getProxima();
+                }
+            } else {
+                atual = atual.getProxima();
             }
-            if ((atual.getElementInt() % 2) != 0 && (atual.getElementInt() % 3) != 0
-                    && (atual.getElementInt() % 5) != 0) {
-                anterior.setProxima(proxima);
-                proxima.setAnterior(anterior);
-                atual = proxima;
-            }
+
         }
+
+    }
+
+    boolean verfPrimo(int numero) {
+        for (int j = 2; j < numero; j++) {
+            if ((numero % j) == 0) {
+                return false;
+            } 
+        }
+        return true;
     }
 
 }
