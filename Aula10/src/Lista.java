@@ -141,7 +141,7 @@ public class Lista {
         tamanho = 0;
     }
 
-    void imprimir() {
+    void imprimirCresc() {
         if (this.tamanho == 0) {
             System.out.println("[]");
         } else {
@@ -152,6 +152,26 @@ public class Lista {
                 builder.append(atual.getElement());
                 builder.append(", ");
                 atual = atual.getProxima();
+            }
+
+            builder.append(atual.getElement());
+            builder.append("]");
+            builder.toString();
+            System.out.println(builder);
+        }
+    }
+
+    void imprimirDesc() {
+        if (this.tamanho == 0) {
+            System.out.println("[]");
+        } else {
+            StringBuilder builder = new StringBuilder("[");
+            Celula atual = this.ultima;
+
+            for (int i = tamanho -1; i > 0; i--) {
+                builder.append(atual.getElement());
+                builder.append(", ");
+                atual = atual.getAnterior();
             }
 
             builder.append(atual.getElement());

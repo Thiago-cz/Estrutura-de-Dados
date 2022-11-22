@@ -8,12 +8,15 @@ public class App {
         }
 
         System.out.println("---------");
-        lista.imprimir();
-        System.out.println("---------");
+        lista.imprimirCresc();
         
+        System.out.println("---------");
+        lista.imprimirDesc();
+        
+        System.out.println("---------");    
         lista.numeroPrimo();
-        
+
         System.out.println("---------");
-        lista.imprimir();
+        lista.imprimirCresc();
     }
 }
