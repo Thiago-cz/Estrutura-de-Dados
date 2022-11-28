@@ -64,7 +64,7 @@ public class Lista {
     Object pega(int pos) { // Pega o elemento na posição desajada
         return (this.pegarCelula(pos).getElement());
     }
-//parei aqui
+
     void removerInicio() {
         if (!this.posicaoOcupada(0)) {
             throw new IllegalArgumentException("Posição não existe!");
@@ -81,13 +81,10 @@ public class Lista {
 
         if (posicaoOcupada(pos)) {
             if (pos == 0) {
-                removido = this.pegarCelula(pos);
-                imprimirRemovido();
+                
                 removerInicio();
             }
             if ((pos > 0) && (pos < this.tamanho)) {
-                removido = this.pegarCelula(pos);
-                imprimirRemovido();
 
                 if (pos == tamanho - 1) {
                     Celula anterior = this.pegarCelula(pos - 1);
@@ -128,7 +125,7 @@ public class Lista {
     int sorteado = 0;
 
     int x = 20;
-//parei aqui
+
     void sortear() {
         for (int i = 0; i <= 19; i++) {
             System.out.println(" \nrodada " + (i + 1) + "\n");
