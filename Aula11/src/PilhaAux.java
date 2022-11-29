@@ -6,21 +6,7 @@ public class PilhaAux {
         this.topo = nova;
     }
 
-    void pop() {
-        if(!isEmpty()){
-            System.out.println("Retirando o elemento da pilha..: " + this.topo.getExpressao());
-            this.topo = this.topo.getAnterior();
-        }else {
-            System.out.println("Pilha vazia!");
-        }
-    }
 
-    boolean isEmpty() {
-        if(this.topo == null) {
-            return true;
-        }
-        return false;
-    }
 
     int sizePilha() {
         CelulaAux p;
@@ -32,25 +18,4 @@ public class PilhaAux {
         }
         return cont;
     }
-
-    void imprimir() {
-        CelulaAux p = topo;
-        if(isEmpty()) {
-            System.out.println("Pilha vazia!!!");
-        }else{
-            while(p!=null) {
-                System.out.println("Nome da pilha.::" + p.getExpressao());
-                p = p.getAnterior();
-            }
-        }
-    }
-
-    void topo() {
-        if(isEmpty()){
-            System.out.println("Pilha vazia!!!");
-        }else {
-            System.out.println("Topo da pilha eh.::" + topo.getExpressao());
-        }
-    }
-    
 }

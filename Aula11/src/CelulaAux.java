@@ -2,9 +2,7 @@ public class CelulaAux {
     String expressao;
     CelulaAux anterior;
     
-    CelulaAux(){
-
-    }
+    CelulaAux(){}
 
     CelulaAux(String expressao, CelulaAux anterior) {
         this.expressao  = expressao;

@@ -26,11 +26,7 @@ public class Lista {
     }
 
     boolean posicaoOcupada(int pos) {
-        if ((pos >= 0) && (pos < this.tamanho)) {
-            return true;
-        } else {
-            return false;
-        }
+        return ((pos >= 0) && (pos < this.tamanho));
     }
 
     Celula pegarCelula(int pos) {

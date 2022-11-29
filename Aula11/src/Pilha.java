@@ -1,3 +1,5 @@
+import javax.swing.JOptionPane;
+
 public class Pilha {
     Celula topo = null;
 
@@ -6,22 +8,6 @@ public class Pilha {
     void push(String expressao) {
         Celula nova = new Celula(expressao, topo);
         this.topo = nova;
-    }
-
-    void pop() {
-        if (!isEmpty()) {
-            System.out.println("Retirando o elemento da pilha..: " + this.topo.getExpressao());
-            this.topo = this.topo.getAnterior();
-        } else {
-            System.out.println("Pilha vazia!");
-        }
-    }
-
-    boolean isEmpty() {
-        if (this.topo == null) {
-            return true;
-        }
-        return false;
     }
 
     int sizePilha() {
@@ -35,32 +21,19 @@ public class Pilha {
         return cont;
     }
 
-    void imprimir() {
-        Celula p = topo;
-        if (isEmpty()) {
-            System.out.println("Pilha vazia!!!");
-        } else {
-            while (p != null) {
-                System.out.println("Nome da pilha.::" + p.getExpressao());
-                p = p.getAnterior();
-            }
-        }
-    }
-
-    void topo() {
-        if (isEmpty()) {
-            System.out.println("Pilha vazia!!!");
-        } else {
-            System.out.println("Topo da pilha eh.::" + topo.getExpressao());
-        }
-    }
-
-    boolean vefExpressao(String expressao) {
+    boolean vefExpressao() {
+        String expressao = JOptionPane.showInputDialog(null, "Digite a expressao a ser analisada!!!");
         boolean x = false;
+
+        if(expressao == "") {
+            System.out.println("Digite algo na expressao!!");
+            return false;
+        }
 
         for (int i = 0; i < expressao.length(); i++) {
             String expr = "";
             expr += expressao.charAt(i);
+
             if (expr.equals("{") || expr.equals("[") || expr.equals("(")) {
                 push(expr);
             }
@@ -68,42 +41,51 @@ public class Pilha {
         for (int i = expressao.length() - 1; i >= 0; i--) {
             String expr = "";
             expr += expressao.charAt(i);
+
             if (expr.equals("}") || expr.equals("]") || expr.equals(")")) {
                 pilhaAux.push(expr);
             }
         }
+
         Celula p = topo;
         CelulaAux p2 = pilhaAux.topo;
-        
-        while (p.getAnterior() != null) {
-            if (p.getExpressao().equals("{")) {
-                if (p2.getExpressao().equals("}")) {
-                    x = true;
-                } else {
-                    x = false;
-                }
-                p = p.getAnterior();
-                p2 = p2.getAnterior();
-            }
 
-            if (p.getExpressao().equals("[")) {
-                if (p2.getExpressao().equals("]")) {
-                    x = true;
-                } else {
-                    x = false;
-                }
-                p = p.getAnterior();
-                p2 = p2.getAnterior();
-            }
+        while ((p.getAnterior() != null) && (p2.getAnterior() != null)) {
 
-            if (p.getExpressao().equals("(")) {
-                if (p2.getExpressao().equals(")")) {
-                    x = true;
-                } else {
-                    x = false;
+            if (sizePilha() == pilhaAux.sizePilha()) {
+
+                if (p.getExpressao().equals("{")) {
+
+                    if (p2.getExpressao().equals("}")) {
+                        x = true;
+                    } else {
+                        x = false;
+                    }
+                    p = p.getAnterior();
+                    p2 = p2.getAnterior();
                 }
-                p = p.getAnterior();
-                p2 = p2.getAnterior();
+
+                if (p.getExpressao().equals("[")) {
+                    if (p2.getExpressao().equals("]")) {
+                        x = true;
+                    } else {
+                        x = false;
+                    }
+                    p = p.getAnterior();
+                    p2 = p2.getAnterior();
+                }
+
+                if (p.getExpressao().equals("(")) {
+                    if (p2.getExpressao().equals(")")) {
+                        x = true;
+                    } else {
+                        x = false;
+                    }
+                    p = p.getAnterior();
+                    p2 = p2.getAnterior();
+                }
+            } else {
+                break;
             }
         }
         return x;

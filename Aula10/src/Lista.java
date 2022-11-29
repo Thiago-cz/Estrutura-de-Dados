@@ -25,10 +25,6 @@ public class Lista {
         }
     }
 
-    Object pega(int pos) {
-        return this.pegarCelula(pos).getElement();
-    }
-
     void addInicio(Object elemento) {
 
         if (this.tamanho == 0) {
