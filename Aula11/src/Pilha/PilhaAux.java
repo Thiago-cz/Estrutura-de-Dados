@@ -1,3 +1,6 @@
+package Pilha;
+import Celula.CelulaAux;
+
 public class PilhaAux {
     CelulaAux topo = null;
 

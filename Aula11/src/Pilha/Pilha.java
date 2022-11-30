@@ -1,4 +1,7 @@
+package Pilha;
 import javax.swing.JOptionPane;
+import Celula.Celula;
+import Celula.CelulaAux;
 
 public class Pilha {
     Celula topo = null;
@@ -21,7 +24,7 @@ public class Pilha {
         return cont;
     }
 
-    boolean vefExpressao() {
+    public boolean vefExpressao() {
         String expressao = JOptionPane.showInputDialog(null, "Digite a expressao a ser analisada!!!");
         boolean x = false;
 

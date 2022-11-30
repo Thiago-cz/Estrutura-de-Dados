@@ -1,15 +1,17 @@
+package Celula;
+
 public class CelulaAux {
     String expressao;
     CelulaAux anterior;
     
     CelulaAux(){}
 
-    CelulaAux(String expressao, CelulaAux anterior) {
+    public CelulaAux(String expressao, CelulaAux anterior) {
         this.expressao  = expressao;
         this.anterior = anterior;
     }
 
-    String getExpressao() {
+    public String getExpressao() {
         return this.expressao;
     }
 
@@ -17,7 +19,7 @@ public class CelulaAux {
         this.expressao = expressao;
     }
     
-    CelulaAux getAnterior() {
+    public CelulaAux getAnterior() {
         return this.anterior;
     }
 
