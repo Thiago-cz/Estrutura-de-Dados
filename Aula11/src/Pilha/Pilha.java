@@ -28,11 +28,6 @@ public class Pilha {
         String expressao = JOptionPane.showInputDialog(null, "Digite a expressao a ser analisada!!!");
         boolean x = false;
 
-        while(expressao == "") {
-            System.out.println("Digite algo na expressao!!");
-            return false;
-        }
-
         for (int i = 0; i < expressao.length(); i++) {
             String expr = "";
             expr += expressao.charAt(i);

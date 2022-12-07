@@ -4,9 +4,7 @@ public class Celula {
     String expressao;
     Celula anterior;
     
-    Celula(){
-
-    }
+    Celula(){}
 
     public Celula(String expressao, Celula anterior) {
         this.expressao  = expressao;
