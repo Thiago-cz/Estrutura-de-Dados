@@ -28,7 +28,7 @@ public class Pilha {
         String expressao = JOptionPane.showInputDialog(null, "Digite a expressao a ser analisada!!!");
         boolean x = false;
 
-        if(expressao == "") {
+        while(expressao == "") {
             System.out.println("Digite algo na expressao!!");
             return false;
         }
@@ -53,7 +53,7 @@ public class Pilha {
         Celula p = topo;
         CelulaAux p2 = pilhaAux.topo;
 
-        while ((p.getAnterior() != null) && (p2.getAnterior() != null)) {
+        while ((p != null) && (p2 != null)) {
 
             if (sizePilha() == pilhaAux.sizePilha()) {
 
@@ -64,8 +64,13 @@ public class Pilha {
                     } else {
                         x = false;
                     }
-                    p = p.getAnterior();
-                    p2 = p2.getAnterior();
+
+                    if(p.getAnterior() == null){
+                        break;
+                    }else {
+                        p = p.getAnterior();
+                        p2 = p2.getAnterior();
+                    }
                 }
 
                 if (p.getExpressao().equals("[")) {
@@ -74,8 +79,13 @@ public class Pilha {
                     } else {
                         x = false;
                     }
-                    p = p.getAnterior();
-                    p2 = p2.getAnterior();
+
+                    if(p.getAnterior() == null){
+                        break;
+                    }else {
+                        p = p.getAnterior();
+                        p2 = p2.getAnterior();
+                    }
                 }
 
                 if (p.getExpressao().equals("(")) {
@@ -84,8 +94,13 @@ public class Pilha {
                     } else {
                         x = false;
                     }
-                    p = p.getAnterior();
-                    p2 = p2.getAnterior();
+
+                    if(p.getAnterior() == null) {
+                        break;
+                    }else {
+                        p = p.getAnterior();
+                        p2 = p2.getAnterior();
+                    }
                 }
             } else {
                 break;
