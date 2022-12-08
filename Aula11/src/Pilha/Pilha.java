@@ -57,7 +57,7 @@ public class Pilha {
                     if (p2.getExpressao().equals("}")) {
                         x = true;
                     } else {
-                        x = false;
+                        break;
                     }
 
                     if(p.getAnterior() == null){
@@ -72,7 +72,7 @@ public class Pilha {
                     if (p2.getExpressao().equals("]")) {
                         x = true;
                     } else {
-                        x = false;
+                        break;
                     }
 
                     if(p.getAnterior() == null){
@@ -87,7 +87,7 @@ public class Pilha {
                     if (p2.getExpressao().equals(")")) {
                         x = true;
                     } else {
-                        x = false;
+                        break;
                     }
 
                     if(p.getAnterior() == null) {
